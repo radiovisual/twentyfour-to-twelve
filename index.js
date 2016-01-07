@@ -3,45 +3,43 @@ var zp = require('simple-zeropad');
 var trim = require('trim');
 var validComps = [23, 59, 59];
 
-module.exports = function(str, opts) {
-    if (typeof str !== 'string') {
-        throw new TypeError('Expected a string');
-    }
+module.exports = function (str) {
+	if (typeof str !== 'string') {
+		throw new TypeError('Expected a string');
+	}
+	str = trim(str);
 
-    str = trim(str);
+	var reg24 = /^[0-9]{2}:[0-9]{2}(:[0-9]{2})?$/;
 
-    var reg24 = /^[0-9]{2}:[0-9]{2}(:[0-9]{2})?$/;
+	if (!reg24.test(str)) {
+		throw new Error('String must be a 24-hour time');
+	}
+	var comps = str.split(':');
 
-    if (!reg24.test(str)) {
-        throw new Error('String must be a 24-hour time')
-    }
+	var hour = parseInt(comps[0], 10);
+	var ampm = (hour < 12 || hour === 0) ? 'AM' : 'PM';
 
-    var comps = str.split(':');
+	if (hour === 0) {
+		comps[0] = 12;
+	} else if (hour > 12) {
+		comps[0] = hour - 12;
+	}
 
-    var hour = parseInt(comps[0]);
-    var ampm = (hour < 12 || hour === 0) ? 'AM' : 'PM';
+	var s = '';
 
-    if (hour === 0) {
-      comps[0] = 12;
-    } else if (hour > 12) {
-      comps[0] = hour - 12;
-    }
+	comps.map(function (item, i) {
+		var num = parseInt(item, 10);
 
-    var s = '';
+		if (num > validComps[i]) {
+			throw new Error('Invalid time: ' + str);
+		}
+		s += zp(num);
 
-    comps.map(function(item, i) {
-      var num = parseInt(item);
+		if (i !== comps.length - 1) {
+			s += ':';
+		}
+	});
 
-      if (num > validComps[i]) {
-        throw new Error('Invalid time: ' + str)
-      }
-
-      s += zp(num);
-
-      if (i !== comps.length - 1) {
-        s += ':'
-      }
-    })
-
-    return s += ' ' + ampm;
+	s += ' ' + ampm;
+	return s;
 };
