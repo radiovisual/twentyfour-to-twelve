@@ -19,7 +19,11 @@
     "conversion",
     "time",
     "string",
-    "hour"
+    "strings",
+    "change",
+    "clock",
+    "hour",
+    "twentyfour"
   ],
   "author": "Michael Wuergler <senjudev@gmail.com> (http://numetriclabs.com)",
   "license": "MIT",
