@@ -1,0 +1,37 @@
+{
+  "name": "twentyfour-to-twelve",
+  "version": "1.0.0",
+  "description": "Convert 24-hour time strings into 12-hour time strings. 14:00 → 02:00 PM",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radiovisual/twentyfour-to-twelve.git"
+  },
+  "keywords": [
+    "twelve",
+    "12",
+    "24",
+    "twenty-four",
+    "covert",
+    "conversion",
+    "time",
+    "string",
+    "hour"
+  ],
+  "author": "Michael Wuergler <senjudev@gmail.com> (http://numetriclabs.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radiovisual/twentyfour-to-twelve/issues"
+  },
+  "homepage": "https://github.com/radiovisual/twentyfour-to-twelve#readme",
+  "devDependencies": {
+    "mocha": "^2.3.0"
+  },
+  "dependencies": {
+    "simple-zeropad": "^1.0.3",
+    "trim": "0.0.1"
+  }
+}
