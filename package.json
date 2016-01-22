@@ -1,6 +1,6 @@
 {
   "name": "twentyfour-to-twelve",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert 24-hour time strings into 12-hour time strings. 14:00 → 02:00 PM",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/radiovisual/twentyfour-to-twelve.git"
   },
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "twelve",
     "12",
